@@ -3,7 +3,7 @@ const Deck = require('./deck.js');
 const Hand = require('./hand.js');
 
 let deck;
-let hand = new Hand ([], [], [])
+let hand = new Hand ([], [], []);
 
 getDeck = () => {
   request('https://deckofcardsapi.com/api/deck/new/', function (error, response, body) {
@@ -44,6 +44,7 @@ drawCards = () => {
 }
 
 drawCards()
+
 setTimeout(() => {
   for (i = 0; i < 5; i++) {
   console.log(`${hand.valuesArr[i]} of ${hand.suitsArr[i]}`)

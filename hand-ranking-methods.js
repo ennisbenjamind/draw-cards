@@ -1,17 +1,6 @@
 var _ = require('lodash');
-const Hand = require('./hand.js');
 
-let hand = new Hand (['QD', '9H', '9D', 'AD', 'JD'], ['DIAMONDS', 'DIAMONDS', 'DIAMONDS', 'DIAMONDS', 'DIAMONDS'], ['1', '1', '4', '4', '9'])
-
-isStraightFlush = (hand) => {
-  if (isStraight(hand) && isFlush(hand) ) {
-    return true
-  } else {
-    return false
-  }
-}
-
-isFourOfAKind = (hand) => {
+exports.isFourOfAKind = (hand) => {
   for (i = 0; i < 5; i++){
     let count = 0
     hand.valuesArr.forEach((value) => {
@@ -26,14 +15,7 @@ isFourOfAKind = (hand) => {
   return false
 }
 
-isFullHouse = (hand) => {
-  if (isPair(hand) && isThreeOfAKind(hand)) {
-    return true
-  }
-  return false
-}
-
-isFlush = (hand) => {
+exports.isFlush = (hand) => {
   if (_.uniq(hand.suitsArr).length == 1) {
     return true
   } else {
@@ -41,7 +23,7 @@ isFlush = (hand) => {
   }
 }
 
-isStraight = (hand) => {
+exports.isStraight = (hand) => {
   var sortedHand = _.sortBy(hand.valuesArr)
   for(var i = 0; i < 4; i++) {
     if(parseInt(sortedHand[i]) + 1 != sortedHand[i + 1]) {
@@ -52,7 +34,7 @@ isStraight = (hand) => {
 }
 
 
-isThreeOfAKind = (hand) => {
+exports.isThreeOfAKind = (hand) => {
   for (i = 0; i < 5; i++){
     let count = 0
     hand.valuesArr.forEach((value) => {
@@ -67,7 +49,7 @@ isThreeOfAKind = (hand) => {
   return false
 }
 
-isTwoPair = (hand) => {
+exports.isTwoPair = (hand) => {
   let pairs = 0
   for (i = 0; i < 5; i++){
     let count = 0
@@ -87,7 +69,7 @@ isTwoPair = (hand) => {
   return false
 }
 
-isPair = (hand) => {
+exports.isPair = (hand) => {
   for (i = 0; i < 5; i++){
     let count = 0
     hand.valuesArr.forEach((value) => {
@@ -101,8 +83,3 @@ isPair = (hand) => {
   }
   return false
 }
-
-
-
-
-console.log(isStraightFlush(hand))
