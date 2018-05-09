@@ -1,7 +1,7 @@
 const evalMethods = require('./hand-ranking-methods.js');
 const convert = require('./convert-face-cards.js');
 
-highestScoringHand = (hand) => {
+exports.highestScoringHand = (hand) => {
   convert.convertFaceCards(hand)
   if (evalMethods.isStraight(hand) && evalMethods.isFlush(hand)) {
     return "Straight Flush!"
@@ -30,5 +30,3 @@ highestScoringHand = (hand) => {
     return "High card..."
   }
 }
-
-console.log(highestScoringHand(hand))
