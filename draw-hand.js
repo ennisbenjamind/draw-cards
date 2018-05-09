@@ -45,5 +45,7 @@ drawCards = () => {
 
 drawCards()
 setTimeout(() => {
-  console.log(hand)
+  for (i = 0; i < 5; i++) {
+  console.log(`${hand.valuesArr[i]} of ${hand.suitsArr[i]}`)
+  }
 }, 4000)
