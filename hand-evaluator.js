@@ -1,32 +1,33 @@
-const methods = require('./hand-ranking-methods.js');
-const Hand = require('./hand.js');
-
-let hand = new Hand (['QD', '9H', '9D', 'AD', 'JD'], ['SPADES', 'DIAMONDS', 'DIAMONDS', 'DIAMONDS', 'DIAMONDS'], ['5', '2', '2', '4', '2'])
+const evalMethods = require('./hand-ranking-methods.js');
+const convert = require('./convert-face-cards.js');
 
 highestScoringHand = (hand) => {
-  if (methods.isStraight(hand) && methods.isFlush(hand)) {
+  convert.convertFaceCards(hand)
+  if (evalMethods.isStraight(hand) && evalMethods.isFlush(hand)) {
     return "Straight Flush!"
   }
-  if (methods.isFourOfAKind(hand)) {
+  if (evalMethods.isFourOfAKind(hand)) {
     return "Four of a Kind!"
   }
-  if (methods.isPair(hand) && methods.isThreeOfAKind(hand)) {
+  if (evalMethods.isPair(hand) && evalMethods.isThreeOfAKind(hand)) {
     return "Full House!"
   }
-  if (methods.isFlush(hand)) {
+  if (evalMethods.isFlush(hand)) {
     return "Flush!"
   }
-  if (methods.isStraight(hand)) {
+  if (evalMethods.isStraight(hand)) {
     return "Straight!"
   }
-  if (methods.isThreeOfAKind(hand)) {
+  if (evalMethods.isThreeOfAKind(hand)) {
     return "Three of a Kind!"
   }
-  if (methods.isTwoPair(hand)) {
+  if (evalMethods.isTwoPair(hand)) {
     return "Two Pair!"
   }
-  if (methods.isPair(hand)) {
+  if (evalMethods.isPair(hand)) {
     return "One Pair!"
+  } else {
+    return "High card..."
   }
 }
 
