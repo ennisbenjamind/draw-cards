@@ -5,7 +5,7 @@ let straightFlush = new Hand (['DIAMONDS', 'DIAMONDS', 'DIAMONDS', 'DIAMONDS', '
 let fourOfAKind = new Hand (['DIAMONDS', 'DIAMONDS', 'DIAMONDS', 'DIAMONDS', 'DIAMONDS'], ['2', '2', '2', '2', 'ACE'])
 let fullHouse = new Hand (['DIAMONDS', 'ACES', 'DIAMONDS', 'SPADES', 'DIAMONDS'], ['2', '2', '2', '3', '3'])
 let flush = new Hand (['ACES', 'ACES', 'ACES', 'ACES', 'ACES'], ['10', 'JACK', '2', '5', 'ACE'])
-let straight = new Hand (['DIAMONDS', 'ACES', 'ACES', 'ACES', 'ACES'], ['10', '7', '6', '8', '9'])
+let straight = new Hand (['DIAMONDS', 'ACES', 'ACES', 'ACES', 'ACES'], ['10', 'JACK', 'QUEEN', '8', '9'])
 
 describe('handEval.highestScoringHand', function(){
   it ('should return with "straight flush"', function() {

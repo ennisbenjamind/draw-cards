@@ -13,47 +13,47 @@ var hand = new Hand([], []);
 getDeck = () => {
   request('https://deckofcardsapi.com/api/deck/new/', function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      let data = JSON.parse(body)
-      console.log('retrieving deck..')
-      deck = data.deck_id
+      let data = JSON.parse(body);
+      console.log('retrieving deck..');
+      deck = data.deck_id;
     }
-  })
-}
+  });
+};
 
 shuffleDeck = () => {
-  getDeck()
+  getDeck();
   setTimeout(() => {
     request(`https://deckofcardsapi.com/api/deck/${deck}/shuffle/`, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        data = JSON.parse(body)
-        console.log('shuffling deck..')
+        data = JSON.parse(body);
+        console.log('shuffling deck..');
       }
-    })
-  }, 1000)
-}
+    });
+  }, 1000);
+};
 
 drawCards = () => {
-  shuffleDeck()
+  shuffleDeck();
   setTimeout(() => {
     request(`https://deckofcardsapi.com/api/deck/${deck}/draw/?count=5`, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        data = JSON.parse(body)
+        data = JSON.parse(body);
         data.cards.map((card) => {
-          hand.valuesArr.push(card.value)
-          hand.suitsArr.push(card.suit)
-        })
+          hand.valuesArr.push(card.value);
+          hand.suitsArr.push(card.suit);
+        });
       }
-    })
-  }, 2000)
-}
+    });
+  }, 2000);
+};
 
 userDrawsCards = () => {
   drawCards();
   setTimeout(() => {
     for (i = 0; i < 5; i++) {
-      console.log(`${hand.valuesArr[i]} of ${hand.suitsArr[i]}`)
+      console.log(`${hand.valuesArr[i]} of ${hand.suitsArr[i]}`);
     }
-    console.log(handEval.highestScoringHand(hand))
+    console.log(handEval.highestScoringHand(hand));
     rl.question("Enter 'y' to draw again: ", (answer) => {
       if (answer == 'y') {
         hand = new Hand([], []);
@@ -62,7 +62,7 @@ userDrawsCards = () => {
         rl.close();
       }
     });
-  }, 4000)
-}
+  }, 4000);
+};
 
-userDrawsCards()
+userDrawsCards();
