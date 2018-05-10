@@ -12,6 +12,7 @@ let pair = new Hand (['DIAMONDS', 'HEARTS', 'SPADES', 'HEARTS', 'HEARTS'], ['10'
 let highCard = new Hand (['DIAMONDS', 'HEARTS', 'SPADES', 'HEARTS', 'HEARTS'], ['10', '8', '7', 'KING', '9']);
 
 describe('handEval.highestScoringHand', function(){
+  
   it ('should return with "Straight Flush!"', function() {
     var string = handEval.highestScoringHand(straightFlush);
 
