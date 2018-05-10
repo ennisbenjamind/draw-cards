@@ -14,7 +14,7 @@ getDeck = () => {
   request('https://deckofcardsapi.com/api/deck/new/', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       let data = JSON.parse(body);
-      console.log('retrieving deck..');
+      console.log('Retrieving deck..\n');
       deck = data.deck_id;
     }
   });
@@ -26,7 +26,7 @@ shuffleDeck = () => {
     request(`https://deckofcardsapi.com/api/deck/${deck}/shuffle/`, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         data = JSON.parse(body);
-        console.log('shuffling deck..');
+        console.log('Shuffling deck..\n');
       }
     });
   }, 1000);
@@ -49,12 +49,14 @@ drawCards = () => {
 
 userDrawsCards = () => {
   drawCards();
+
   setTimeout(() => {
+    console.log("Hand:");
     for (i = 0; i < 5; i++) {
       console.log(`${hand.valuesArr[i]} of ${hand.suitsArr[i]}`);
     }
-    console.log(handEval.highestScoringHand(hand));
-    rl.question("Enter 'y' to draw again: ", (answer) => {
+    console.log(`\n${handEval.highestScoringHand(hand)}`);
+    rl.question("\nEnter 'y' to draw again: \n", (answer) => {
       if (answer == 'y') {
         hand = new Hand([], []);
         userDrawsCards();
