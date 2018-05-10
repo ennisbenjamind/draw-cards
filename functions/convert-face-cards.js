@@ -1,6 +1,8 @@
 const Hand = require('../classes/hand.js');
+
 //Face cards are converted to string integers during evaluation to identify
 //straights.
+
 exports.convertFaceCards = (hand) => {
     for (i = 0; i < 5; i++) {
       if (hand.valuesArr[i] == 'ACE') {

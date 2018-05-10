@@ -9,7 +9,7 @@ let straight = new Hand (['DIAMONDS', 'HEARTS', 'HEARTS', 'HEARTS', 'HEARTS'], [
 let threeOfAKind = new Hand (['DIAMONDS', 'HEARTS', 'SPADES', 'HEARTS', 'HEARTS'], ['10', '8', '8', '8', '9']);
 let twoPair = new Hand (['DIAMONDS', 'HEARTS', 'SPADES', 'HEARTS', 'HEARTS'], ['10', '8', '8', '9', '9']);
 let pair = new Hand (['DIAMONDS', 'HEARTS', 'SPADES', 'HEARTS', 'HEARTS'], ['10', '8', '7', '9', '9']);
-let highCard = new Hand (['DIAMONDS', 'HEARTS', 'SPADES', 'HEARTS', 'HEARTS'], ['10', '8', '7', 'KING', '9']);
+let highCard = new Hand (['DIAMONDS', 'HEARTS', 'SPADES', 'HEARTS', 'HEARTS'], ['10', '8', '7', 'QUEEN', '9']);
 
 describe('handEval.highestScoringHand()', function(){
 
