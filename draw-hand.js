@@ -4,19 +4,18 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-const handEval = require('./hand-evaluator')
-const Deck = require('./deck.js');
+const handEval = require('./hand-evaluator');
 const Hand = require('./hand.js');
 
-var deck = new Deck("");
-var hand = new Hand([], [], []);
+var deck;
+var hand = new Hand([], []);
 
 getDeck = () => {
   request('https://deckofcardsapi.com/api/deck/new/', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       let data = JSON.parse(body)
       console.log('retrieving deck..')
-      deck.deck_id = data.deck_id
+      deck = data.deck_id
     }
   })
 }
@@ -24,7 +23,7 @@ getDeck = () => {
 shuffleDeck = () => {
   getDeck()
   setTimeout(() => {
-    request(`https://deckofcardsapi.com/api/deck/${deck.deck_id}/shuffle/`, function (error, response, body) {
+    request(`https://deckofcardsapi.com/api/deck/${deck}/shuffle/`, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         data = JSON.parse(body)
         console.log('shuffling deck..')
@@ -36,11 +35,10 @@ shuffleDeck = () => {
 drawCards = () => {
   shuffleDeck()
   setTimeout(() => {
-    request(`https://deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=5`, function (error, response, body) {
+    request(`https://deckofcardsapi.com/api/deck/${deck}/draw/?count=5`, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         data = JSON.parse(body)
         data.cards.map((card) => {
-          hand.cardsArr.push(card.code)
           hand.valuesArr.push(card.value)
           hand.suitsArr.push(card.suit)
         })
@@ -50,7 +48,7 @@ drawCards = () => {
 }
 
 userDrawsCards = () => {
-  drawCards()
+  drawCards();
   setTimeout(() => {
     for (i = 0; i < 5; i++) {
       console.log(`${hand.valuesArr[i]} of ${hand.suitsArr[i]}`)
@@ -58,6 +56,7 @@ userDrawsCards = () => {
     console.log(handEval.highestScoringHand(hand))
     rl.question("Enter 'y' to draw again: ", (answer) => {
       if (answer == 'y') {
+        hand = new Hand([], []);
         userDrawsCards();
       } else {
         rl.close();

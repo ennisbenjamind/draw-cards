@@ -1,6 +1,5 @@
 class Hand {
-  constructor(card, suit, value) {
-    this.cardsArr = card;
+  constructor(suit, value) {
     this.suitsArr = suit;
     this.valuesArr = value;
   }
