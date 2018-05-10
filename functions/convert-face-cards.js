@@ -1,4 +1,4 @@
-const Hand = require('./hand.js');
+const Hand = require('../classes/hand.js');
 
 exports.convertFaceCards = (hand) => {
     for (i = 0; i < 5; i++) {
