@@ -24,7 +24,7 @@ exports.isFlush = (hand) => {
 }
 
 exports.isStraight = (hand) => {
-  var sortedHand = _.sortBy(hand.valuesArr)
+  var sortedHand = hand.valuesArr.sort(function(a, b){return a - b});
   for(var i = 0; i < 4; i++) {
     if(parseInt(sortedHand[i]) + 1 != sortedHand[i + 1]) {
       return false
