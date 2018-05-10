@@ -18,7 +18,7 @@ Run:
 $ node draw-hand.js
 ```
 ```
-# To run our test suite:
+# To run the test suite:
 $ npm test
 ```
 Notes:
@@ -35,4 +35,5 @@ the separate arrays.
 Assumptions:
 ---
 - The user can identify why their hand received its score. For example,
-if user scores a high card, it is assumed they can identify that card.
+if user scores a high card, it is assumed they can identify which one is
+the highest scoring card.
