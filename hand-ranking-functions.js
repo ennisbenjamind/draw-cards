@@ -62,8 +62,7 @@ exports.isTwoPair = (hand) => {
       pairs++;
     }
   }
-  return pairs;
-  if (pairs > 1) {
+  if (pairs == 4) {
     return true;
   }
   return false;
