@@ -1,15 +1,15 @@
-var handEval = require('../hand-evaluator.js');
-const Hand = require('../hand.js');
+var handEval = require('../functions/hand-evaluator.js');
+const Hand = require('../classes/hand.js');
 
 let straightFlush = new Hand (['DIAMONDS', 'DIAMONDS', 'DIAMONDS', 'DIAMONDS', 'DIAMONDS'], ['10', 'JACK', 'QUEEN', 'KING', 'ACE']);
 let fourOfAKind = new Hand (['DIAMONDS', 'DIAMONDS', 'DIAMONDS', 'DIAMONDS', 'DIAMONDS'], ['2', '2', '2', '2', 'ACE']);
-let fullHouse = new Hand (['DIAMONDS', 'ACES', 'DIAMONDS', 'SPADES', 'DIAMONDS'], ['2', '2', '2', '3', '3']);
-let flush = new Hand (['ACES', 'ACES', 'ACES', 'ACES', 'ACES'], ['10', 'JACK', '2', '5', 'ACE']);
-let straight = new Hand (['DIAMONDS', 'ACES', 'ACES', 'ACES', 'ACES'], ['10', 'JACK', 'QUEEN', '8', '9']);
-let threeOfAKind = new Hand (['DIAMONDS', 'ACES', 'SPADES', 'ACES', 'ACES'], ['10', '8', '8', '8', '9']);
-let twoPair = new Hand (['DIAMONDS', 'ACES', 'SPADES', 'ACES', 'ACES'], ['10', '8', '8', '9', '9']);
-let pair = new Hand (['DIAMONDS', 'ACES', 'SPADES', 'ACES', 'ACES'], ['10', '8', '7', '9', '9']);
-let highCard = new Hand (['DIAMONDS', 'ACES', 'SPADES', 'ACES', 'ACES'], ['10', '8', '7', 'KING', '9']);
+let fullHouse = new Hand (['DIAMONDS', 'HEARTS', 'DIAMONDS', 'SPADES', 'DIAMONDS'], ['2', '2', '2', '3', '3']);
+let flush = new Hand (['HEARTS', 'HEARTS', 'HEARTS', 'HEARTS', 'HEARTS'], ['10', 'JACK', '2', '5', 'ACE']);
+let straight = new Hand (['DIAMONDS', 'HEARTS', 'HEARTS', 'HEARTS', 'HEARTS'], ['10', 'JACK', 'QUEEN', '8', '9']);
+let threeOfAKind = new Hand (['DIAMONDS', 'HEARTS', 'SPADES', 'HEARTS', 'HEARTS'], ['10', '8', '8', '8', '9']);
+let twoPair = new Hand (['DIAMONDS', 'HEARTS', 'SPADES', 'HEARTS', 'HEARTS'], ['10', '8', '8', '9', '9']);
+let pair = new Hand (['DIAMONDS', 'HEARTS', 'SPADES', 'HEARTS', 'HEARTS'], ['10', '8', '7', '9', '9']);
+let highCard = new Hand (['DIAMONDS', 'HEARTS', 'SPADES', 'HEARTS', 'HEARTS'], ['10', '8', '7', 'KING', '9']);
 
 describe('handEval.highestScoringHand', function(){
   it ('should return with "Straight Flush!"', function() {

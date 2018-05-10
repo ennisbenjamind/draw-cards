@@ -4,8 +4,8 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-const handEval = require('./hand-evaluator');
-const Hand = require('./hand.js');
+const handEval = require('./functions/hand-evaluator');
+const Hand = require('./classes/hand.js');
 
 var deck;
 var hand = new Hand([], []);
